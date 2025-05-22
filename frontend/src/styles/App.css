@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2a2a2a;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .app {
+    display: flex;
+    height: 100vh;
+    background-color: #2a2a2a;
+  }
+  
+  /* Left Panel Styles */
+  .left-panel {
+    width: 350px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .robot-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .agro-text {
+    color: #4CAF50;
+  }
+  
+  .bot-text {
+    color: #4CAF50;
+  }
+  
+  .robot-image-container {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+  
+  .robot-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  /* Battery Styles */
+  .battery-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .battery-bar {
+    flex: 1;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .battery-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+  }
+  
+  .battery-text {
+    font-weight: bold;
+    color: #4CAF50;
+    min-width: 40px;
+  }
+  
+  /* Status Styles */
+  .status-container {
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+  }
+  
+  .status-label {
+    color: #ccc;
+  }
+  
+  .status-value {
+    color: #FFD700;
+    font-weight: bold;
+  }
+  
+  /* Right Panel Styles */
+  .right-panel {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Control Buttons */
+  .control-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+  }
+  
+  .start-btn, .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .start-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .start-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .back-btn {
+    background-color: #666;
+    color: white;
+  }
+  
+  .back-btn:hover {
+    background-color: #555;
+  }
+  
+  .play-icon, .back-icon {
+    font-size: 14px;
+  }
+  
+  /* Map Container */
+  .map-container {
+    position: relative;
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .coordinate-overlays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .coordinate-point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .point-marker {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .red-point .point-marker {
+    background-color: #ff4444;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
+  }
+  
+  .orange-point .point-marker {
+    background-color: #ff8800;
+    box-shadow: 0 0 10px rgba(255, 136, 0, 0.6);
+  }
+  
+  /* Status Info */
+  .status-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+  }
+  
+  .status-dot {
+    font-size: 12px;
+  }
+  
+  .red-dot {
+    color: #ff4444;
+  }
+  
+  .orange-dot {
+    color: #ff8800;
+  }
+  
+  /* Coordinates */
+  .coordinates {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .coord-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .coord-icon {
+    font-size: 16px;
+  }
+  
+  .red-icon {
+    color: #ff4444;
+  }
+  
+  .orange-icon {
+    color: #ff8800;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .app {
+      flex-direction: column;
+    }
+    
+    .left-panel {
+      width: 100%;
+      height: auto;
+    }
+    
+    .robot-image-container {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .control-buttons {
+      justify-content: center;
+    }
+  }
