@@ -1,0 +1,45 @@
+/* Map Container */
+.map-container {
+    position: relative;
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .coordinate-overlays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .coordinate-point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .point-marker {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .red-point .point-marker {
+    background-color: #ff4444;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
+  }
+  
+  .orange-point .point-marker {
+    background-color: #ff8800;
+    box-shadow: 0 0 10px rgba(255, 136, 0, 0.6);
+  }

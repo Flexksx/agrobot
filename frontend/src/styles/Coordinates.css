@@ -1,0 +1,26 @@
+/* Coordinates */
+.coordinates {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .coord-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .coord-icon {
+    font-size: 16px;
+  }
+  
+  .red-icon {
+    color: #ff4444;
+  }
+  
+  .orange-icon {
+    color: #ff8800;
+  }

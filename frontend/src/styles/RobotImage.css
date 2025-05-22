@@ -1,0 +1,21 @@
+.robot-image-container {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border: 3px solid #333;
+  }
+  
+  .robot-image {
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    transform: scale(0.8);
+  }

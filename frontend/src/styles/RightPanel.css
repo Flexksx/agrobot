@@ -1,0 +1,7 @@
+/* Right Panel Styles */
+.right-panel {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }

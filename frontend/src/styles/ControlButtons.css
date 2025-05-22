@@ -1,0 +1,41 @@
+/* Control Buttons */
+.control-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+  }
+  
+  .start-btn, .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .start-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .start-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .back-btn {
+    background-color: #666;
+    color: white;
+  }
+  
+  .back-btn:hover {
+    background-color: #555;
+  }
+  
+  .play-icon, .back-icon {
+    font-size: 14px;
+  }

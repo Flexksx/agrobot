@@ -1,0 +1,15 @@
+/* Status Styles */
+.status-container {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+  }
+  
+  .status-label {
+    color: #ccc;
+  }
+  
+  .status-value {
+    color: #FFD700;
+    font-weight: bold;
+  }
