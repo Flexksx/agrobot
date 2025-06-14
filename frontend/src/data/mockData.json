@@ -1,0 +1,35 @@
+{
+    "id": "agrobot-001",
+    "status": "Active",
+    "battery": 85,
+    "pests": 6,
+    "dryness": 70,
+    "coordinates": [
+      { "lat": 46.77, "lon": 23.06 }
+    ],
+    "lastUpdated": "2025-06-14T10:30:00.000Z",
+    "sensors": {
+      "temperature": 24.5,
+      "humidity": 65,
+      "soilMoisture": 30
+    },
+    "workArea": {
+      "totalArea": 1500,
+      "coveredArea": 750,
+      "remainingArea": 750
+    },
+    "alerts": [
+      {
+        "id": 1,
+        "type": "warning",
+        "message": "High pest activity detected",
+        "timestamp": "2025-06-14T09:15:00.000Z"
+      },
+      {
+        "id": 2,
+        "type": "info",
+        "message": "Soil dryness level increasing",
+        "timestamp": "2025-06-14T08:45:00.000Z"
+      }
+    ]
+  }

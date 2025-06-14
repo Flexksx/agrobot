@@ -4,7 +4,7 @@ import RobotImage from './RobotImage';
 import Battery from './Battery';
 import RobotStatus from './RobotStatus';
 
-const LeftPanel = ({ status }) => {
+const LeftPanel = () => {
   return (
     <div className="left-panel">
       <div className="robot-section">
@@ -15,7 +15,7 @@ const LeftPanel = ({ status }) => {
         
         <RobotImage />
         <Battery />
-        <RobotStatus status={status} />
+        <RobotStatus />
       </div>
     </div>
   );
