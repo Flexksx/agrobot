@@ -37,7 +37,6 @@
 
           # Example: If you use PostgreSQL
           postgresql.lib # Provides libpq.so
-          nodejs_22
 
           # Example: If you need other common libs
           # openssl
@@ -61,6 +60,7 @@
           packages = [
             pythonEnv # Provides the `python` command
             poetry # Provides the `poetry` command
+            pkgs.nodejs_23
           ] ++ systemDeps;
 
           # Environment variables and commands to run when entering the shell
