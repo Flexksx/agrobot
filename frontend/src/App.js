@@ -97,13 +97,6 @@ function App() {
     }
   };
 
-  // Toggle between mock and real data (for testing)
-  const toggleDataSource = () => {
-    const newUseMock = !DataService.USE_MOCK_DATA;
-    DataService.setDataSource(newUseMock);
-    fetchRobotData();
-  };
-
   // Show error state only if we can't connect and have no data
   if (error && !robotData.isConnected && isLoading) {
     return (
@@ -112,9 +105,6 @@ function App() {
           <h2>Connection Error</h2>
           <p>{error}</p>
           <button onClick={fetchRobotData}>Retry Connection</button>
-          <button onClick={toggleDataSource} style={{ marginLeft: '10px' }}>
-            Switch to {DataService.USE_MOCK_DATA ? 'Real' : 'Mock'} Data
-          </button>
         </div>
       </div>
     );
@@ -161,15 +151,6 @@ function App() {
       <div className="connection-status">
         <div className={`connection-indicator ${robotData.isConnected ? 'connected' : 'disconnected'}`}></div>
         {robotData.isConnected ? 'Connected' : 'Disconnected'}
-        {DataService.USE_MOCK_DATA && ' (Mock)'}
-      </div>
-      
-      {/* Development controls (remove in production) */}
-      <div className="dev-controls">
-        <button onClick={toggleDataSource}>
-          Switch to {DataService.USE_MOCK_DATA ? 'Real Backend' : 'Mock Data'}
-        </button>
-        <span>Last update: {agroBot.getTimeSinceUpdate()}</span>
       </div>
     </div>
   );

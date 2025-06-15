@@ -9,6 +9,7 @@ class AgroBot {
     this.pests = 0;
     this.dryness = 0;
     this.coordinates = [];
+    this.pestCoordinates = []; // New property for pest coordinates
     this.lastUpdated = null;
     this.isConnected = false;
     
@@ -34,6 +35,7 @@ class AgroBot {
     this.pests = data.pests || 0;
     this.dryness = data.dryness || 0;
     this.coordinates = data.coordinates || [];
+    this.pestCoordinates = data.pestCoordinates || []; // Initialize pest coordinates
     this.lastUpdated = data.lastUpdated || new Date().toISOString();
     this.sensors = data.sensors || this.sensors;
     this.workArea = data.workArea || this.workArea;
@@ -107,6 +109,7 @@ class AgroBot {
       pests: this.pests,
       dryness: this.dryness,
       coordinates: this.coordinates,
+      pestCoordinates: this.pestCoordinates, // Add pest coordinates to formatted data
       lastUpdated: this.lastUpdated,
       isConnected: this.isConnected,
       sensors: this.sensors,
@@ -179,6 +182,21 @@ class AgroBot {
   // Get active alerts count
   getActiveAlertsCount() {
     return this.alerts.filter(alert => alert.type === 'warning' || alert.type === 'error').length;
+  }
+
+  // New method to get pest coordinates by severity
+  getPestsBySeverity(severity) {
+    return this.pestCoordinates.filter(pest => pest.severity === severity);
+  }
+
+  // New method to get all pest coordinates
+  getAllPestCoordinates() {
+    return this.pestCoordinates;
+  }
+
+  // New method to get current robot position
+  getCurrentPosition() {
+    return this.coordinates.length > 0 ? this.coordinates[0] : null;
   }
 }
 

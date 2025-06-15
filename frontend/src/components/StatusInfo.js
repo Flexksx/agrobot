@@ -37,42 +37,8 @@ const StatusInfo = () => {
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
-  // Show loading state
-  if (isLoading) {
-    return (
-      <div className="status-info">
-        <div className="status-item">
-          <span className="status-dot red-dot">●</span>
-          <span>Loading...</span>
-        </div>
-      </div>
-    );
-  }
-
-  // Show error state
-  if (error) {
-    return (
-      <div className="status-info">
-        <div className="status-item">
-          <span className="status-dot red-dot">●</span>
-          <span>Error loading data</span>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="status-info">
-      <div className="status-item">
-        <span className="status-dot red-dot">●</span>
-        <span>Pests: {pests}</span>
-      </div>
-      <div className="status-item">
-        <span className="status-dot orange-dot">●</span>
-        <span>Dryness: {dryness}%</span>
-      </div>
-    </div>
-  );
+  // Remove all rendering - component will not display anything
+  return null;
 };
 
 export default StatusInfo;

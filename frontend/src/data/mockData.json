@@ -1,35 +1,43 @@
 {
-    "id": "agrobot-001",
-    "status": "Active",
-    "battery": 85,
-    "pests": 6,
-    "dryness": 70,
-    "coordinates": [
-      { "lat": 46.77, "lon": 23.06 }
-    ],
-    "lastUpdated": "2025-06-14T10:30:00.000Z",
-    "sensors": {
-      "temperature": 24.5,
-      "humidity": 65,
-      "soilMoisture": 30
+  "id": "agrobot-001",
+  "status": "Active",
+  "battery": 85,
+  "pests": 6,
+  "dryness": 70,
+  "coordinates": [
+    { "lat": 46.7712, "lon": 23.0618 }
+  ],
+  "pestCoordinates": [
+    { "lat": 46.7698, "lon": 23.0605, "severity": "medium" },
+    { "lat": 46.7724, "lon": 23.0632, "severity": "high" },
+    { "lat": 46.7689, "lon": 23.0641, "severity": "low" },
+    { "lat": 46.7735, "lon": 23.0597, "severity": "medium" },
+    { "lat": 46.7703, "lon": 23.0653, "severity": "high" },
+    { "lat": 46.7716, "lon": 23.0584, "severity": "low" }
+  ],
+  "lastUpdated": "2025-06-14T10:30:00.000Z",
+  "sensors": {
+    "temperature": 24.5,
+    "humidity": 65,
+    "soilMoisture": 30
+  },
+  "workArea": {
+    "totalArea": 1500,
+    "coveredArea": 750,
+    "remainingArea": 750
+  },
+  "alerts": [
+    {
+      "id": 1,
+      "type": "warning",
+      "message": "High pest activity detected",
+      "timestamp": "2025-06-14T09:15:00.000Z"
     },
-    "workArea": {
-      "totalArea": 1500,
-      "coveredArea": 750,
-      "remainingArea": 750
-    },
-    "alerts": [
-      {
-        "id": 1,
-        "type": "warning",
-        "message": "High pest activity detected",
-        "timestamp": "2025-06-14T09:15:00.000Z"
-      },
-      {
-        "id": 2,
-        "type": "info",
-        "message": "Soil dryness level increasing",
-        "timestamp": "2025-06-14T08:45:00.000Z"
-      }
-    ]
-  }
+    {
+      "id": 2,
+      "type": "info",
+      "message": "Soil dryness level increasing",
+      "timestamp": "2025-06-14T08:45:00.000Z"
+    }
+  ]
+}
