@@ -8,26 +8,18 @@ const MapView = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  // Default coordinates for Chișinău if no bot coordinates available
-  const defaultLat = 47.0105;
-  const defaultLng = 28.8638;
-  
-  // Get center coordinates from AgroBot or use default
+  // Get center coordinates from AgroBot
   const getCenterCoordinates = () => {
     if (agroBot.coordinates && agroBot.coordinates.length > 0) {
       // If bot has multiple coordinates, use the first one as center or calculate centroid
       const firstCoord = agroBot.coordinates[0];
       return {
-        lat: firstCoord.lat || firstCoord.latitude || defaultLat,
-        lng: firstCoord.lng || firstCoord.lon || firstCoord.longitude || defaultLng
+        lat: firstCoord.lat || firstCoord.latitude,
+        lng: firstCoord.lng || firstCoord.lon || firstCoord.longitude
       };
     }
-    return { lat: defaultLat, lng: defaultLng };
+    return null; // Return null if no coordinates available
   };
-
-  const centerCoords = getCenterCoordinates();
-  const centerLat = centerCoords.lat;
-  const centerLng = centerCoords.lng;
 
   // Load AgroBot data on component mount
   useEffect(() => {
@@ -41,13 +33,8 @@ const MapView = () => {
       } catch (err) {
         console.error('Failed to load AgroBot data:', err);
         setError('Failed to load robot data');
-        // Create a bot with default coordinates for fallback
+        // Don't create fallback bot, let the component handle no coordinates
         const fallbackBot = new AgroBot();
-        fallbackBot.initialize({
-          id: 'offline',
-          status: 'Offline',
-          coordinates: [{ lat: defaultLat, lng: defaultLng, label: 'Default Location' }]
-        });
         setAgroBot(fallbackBot);
       } finally {
         setLoading(false);
@@ -60,6 +47,20 @@ const MapView = () => {
     const interval = setInterval(loadBotData, 30000);
     return () => clearInterval(interval);
   }, []);
+
+  const centerCoords = getCenterCoordinates();
+  
+  // Don't render if no coordinates available
+  if (!centerCoords) {
+    return (
+      <div className="relative w-full h-full min-h-[80vh] bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-700 flex items-center justify-center">
+        <div className="text-white text-lg">No robot coordinates available</div>
+      </div>
+    );
+  }
+  
+  const centerLat = centerCoords.lat;
+  const centerLng = centerCoords.lng;
 
   // Create map points from AgroBot coordinates
   const createMapPoints = () => {
@@ -87,9 +88,9 @@ const MapView = () => {
     // Add fallback point if no valid coordinates found
     if (points.length === 0) {
       points.push({
-        id: 'fallback',
-        lat: centerLat,
-        lng: centerLng,
+        id: 'no-location',
+        lat: 0,
+        lng: 0,
         color: 'gray',
         label: 'No Bot Location',
         description: 'Robot coordinates not available',
@@ -129,19 +130,20 @@ const MapView = () => {
 
   if (loading) {
     return (
-      <div className="relative w-full h-96 bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-700 flex items-center justify-center">
+      <div className="relative w-full h-full min-h-[80vh] bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-700 flex items-center justify-center">
+        <div className="text-white text-lg">Loading map...</div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-96 bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+    <div className="relative w-full h-full min-h-[80vh] bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-700">
       {/* Real Satellite Map Background */}
       <iframe
         src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2719.8!2d${centerLng}!3d${centerLat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1`}
         width="100%"
         height="100%"
-        style={{ border: 0 }}
+        style={{ border: 0, minHeight: '80vh' }}
         allowFullScreen=""
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
@@ -181,6 +183,17 @@ const MapView = () => {
           </div>
         );
       })}
+
+      {/* Tooltip for hovered point */}
+      {hoveredPoint && (
+        <div className="absolute top-4 left-4 bg-black bg-opacity-80 text-white p-3 rounded-lg shadow-lg z-20 max-w-xs">
+          <h3 className="font-semibold text-sm">{hoveredPoint.label}</h3>
+          <p className="text-xs text-gray-300 mt-1">{hoveredPoint.description}</p>
+          <p className="text-xs text-gray-400 mt-1">
+            Lat: {hoveredPoint.lat.toFixed(6)}, Lng: {hoveredPoint.lng.toFixed(6)}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import '../styles/LeftPanel.css';
 import RobotImage from './RobotImage';
 import Battery from './Battery';
 import RobotStatus from './RobotStatus';
+import StatusInfo from './StatusInfo';
 
 const LeftPanel = () => {
   return (
@@ -16,6 +17,7 @@ const LeftPanel = () => {
         <RobotImage />
         <Battery />
         <RobotStatus />
+        <StatusInfo />
       </div>
     </div>
   );

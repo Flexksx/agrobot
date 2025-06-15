@@ -1,25 +1,222 @@
-/* Status Info */
+/* StatusInfo.css */
 .status-info {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px 0;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  min-width: 200px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.status-header {
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 8px;
+}
+
+.status-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.status-item.sub-item {
+  margin-left: 20px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.status-item.last-updated {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.status-label {
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Robot Status Colors */
+.status-dot.robot-status.active,
+.status-dot.robot-status.working {
+  background-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
+}
+
+.status-dot.robot-status.pause,
+.status-dot.robot-status.paused {
+  background-color: #FF9800;
+  box-shadow: 0 0 6px rgba(255, 152, 0, 0.6);
+}
+
+.status-dot.robot-status.charging {
+  background-color: #2196F3;
+  box-shadow: 0 0 6px rgba(33, 150, 243, 0.6);
+}
+
+.status-dot.robot-status.error,
+.status-dot.robot-status.offline {
+  background-color: #F44336;
+  box-shadow: 0 0 6px rgba(244, 67, 54, 0.6);
+}
+
+/* Battery Level Colors */
+.status-dot.battery.good {
+  background-color: #4CAF50;
+}
+
+.status-dot.battery.medium {
+  background-color: #FF9800;
+}
+
+.status-dot.battery.low {
+  background-color: #FF5722;
+}
+
+.status-dot.battery.critical {
+  background-color: #F44336;
+  animation: pulse 1.5s infinite;
+}
+
+/* Pest Colors */
+.status-dot.pest-total {
+  background-color: #FF6B35;
+}
+
+.status-dot.pest-high {
+  background-color: #D32F2F;
+  box-shadow: 0 0 6px rgba(211, 47, 47, 0.8);
+}
+
+.status-dot.pest-medium {
+  background-color: #FF9800;
+  box-shadow: 0 0 6px rgba(255, 152, 0, 0.6);
+}
+
+.status-dot.pest-low {
+  background-color: #FFC107;
+  box-shadow: 0 0 6px rgba(255, 193, 7, 0.4);
+}
+
+/* Dryness Level Colors */
+.status-dot.dryness.critical {
+  background-color: #8B0000;
+  animation: pulse 1.5s infinite;
+}
+
+.status-dot.dryness.high {
+  background-color: #D32F2F;
+}
+
+.status-dot.dryness.medium {
+  background-color: #FF9800;
+}
+
+.status-dot.dryness.low {
+  background-color: #4CAF50;
+}
+
+/* Temperature Colors */
+.status-dot.temperature.hot {
+  background-color: #FF4444;
+}
+
+.status-dot.temperature.normal {
+  background-color: #4CAF50;
+}
+
+.status-dot.temperature.cold {
+  background-color: #2196F3;
+}
+
+/* Other Sensor Colors */
+.status-dot.humidity {
+  background-color: #03A9F4;
+}
+
+.status-dot.soil-moisture {
+  background-color: #8BC34A;
+}
+
+.status-dot.work-progress {
+  background-color: #9C27B0;
+}
+
+.status-dot.alert-active {
+  background-color: #FF5722;
+  animation: pulse 2s infinite;
+}
+
+/* Loading and Error States */
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.loading {
+  color: #ccc;
+}
+
+.error {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 4px;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 12px currentColor, 0 0 4px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .status-info {
+    margin: 5px 0;
+    padding: 12px;
   }
   
   .status-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 16px;
+    font-size: 13px;
   }
   
-  .status-dot {
+  .status-item.sub-item {
     font-size: 12px;
   }
-  
-  .red-dot {
-    color: #ff4444;
-  }
-  
-  .orange-dot {
-    color: #ff8800;
-  }
+}
